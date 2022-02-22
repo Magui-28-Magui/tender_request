@@ -93,8 +93,16 @@
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                         <div class="row g-2">
                             <div class="col-md mb-4">
-                                <label for="item">Item</label>
-                                <input type="text" class="form-control" id="item" placeholder="Item">
+                                <label for="browser">Choose a part number from the list:</label>
+                                <input class="form-control" list="pn" name="pn" id="pn2">
+
+                                <datalist id="pn">
+                                    <option value="Edge">
+                                    <option value="Firefox">
+                                    <option value="Chrome">
+                                    <option value="Opera">
+                                    <option value="Safari">
+                                </datalist>
                             </div>
                             <div class="col-md mb-4">
                                 <label for="description">Description</label>
@@ -181,3 +189,23 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    window.onload = function(element) {
+        let find_item = document.querySelector("#pn");
+        let url = "http://localhost/martech/tender_request/tender_request/functions/get_items.php"
+
+
+        fetch(url, {
+            method: 'GET',
+        })
+            .then(res => res.text())
+            .then((html) => {
+                find_item.innerHTML = html;
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    };
+</script>
