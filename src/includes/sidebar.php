@@ -10,6 +10,10 @@
                         <div class="nav-link-icon"><i class="material-icons">home</i></div>
                         Home
                     </a>
+                    <a class="nav-link" href="index.php?page=tender_request_form">
+                        <div class="nav-link-icon"><i class="material-icons">description</i></div>
+                        Tender request form
+                    </a>
                     <!-- Divider-->
                     <div class="drawer-menu-divider"></div>
                     <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseReports2" aria-expanded="false" aria-controls="collapseLayouts">
