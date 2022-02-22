@@ -91,6 +91,14 @@
                     </div>
                     <!-- -->
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <div class="row g-2">
+                            <div class="col-md mb-4"></div>
+                            <div class="col-md mb-4">
+                                <div class="d-grid gap-2 d-md-flex mt-3 justify-content-md-end">
+                                    <button class="btn btn-success" type="button">Add Item</button>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row g-2">
                             <div class="col-md mb-4">
                                 <label for="browser">Choose a part number from the list:</label>
@@ -181,7 +189,7 @@
                         <div class="col-md-6 mb-4"></div>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button class="btn btn-default me-md-2" type="button">Previus</button>
-                            <button class="btn btn-primary" type="button">Finish</button>
+                            <a href="index.php?page=tender_request_table" class="btn btn-primary" type="button">Finish</a>
                         </div>
                     </div>
                 </div>

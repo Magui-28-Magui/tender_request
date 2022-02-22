@@ -23,10 +23,6 @@ include_once("views/dashboard/dashboard.php");
                 <canvas style="" id="requestChart"></canvas>
             </div>
         </div>
-
-
-
-
         <div class="card card-raised col-lg-8">
             <div class="card-header bg-transparent px-4 gx-5">
                 <div class="d-flex justify-content-between align-items-center">

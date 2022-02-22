@@ -19,5 +19,5 @@ if ($login->isUserLoggedIn() == true) {
 
 } else {
 
-    include("src/views/not_logged_in.php");
+    include("src/views/logged_in.php");
 }

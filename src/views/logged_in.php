@@ -12,6 +12,9 @@ if (!empty($page)) {
             include("src/views/tender_request/tender_request_form.php");
             break;
 
+        case "tender_request_table":
+            include("src/views/tender_request/tender_request_table.php");
+            break;
 
         default:
             include("src/views/dashboard/dashboard.php");
