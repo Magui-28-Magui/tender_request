@@ -9,7 +9,7 @@ if (!empty($page)) {
 
     switch ($page) {
         case "tender_request_form":
-            include("src/views/tender_request/tender_request_form.php");
+            include("src/views/tender_request/wizard/tender_request_form.php");
             break;
 
         case "tender_request_table":
