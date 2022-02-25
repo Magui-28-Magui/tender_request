@@ -1,51 +1,125 @@
-<div class="row g-2">
-    <div class="col-md mb-4"></div>
-    <div class="col-md mb-4">
-        <div class="d-grid gap-2 d-md-flex mt-3 justify-content-md-end">
-            <button class="btn btn-success" type="button">Add Item</button>
+<?php
+
+require_once('./functions/items/items.php');
+saveItems();
+?>
+<form method="POST">
+    <div class="row g-2">
+        <div class="col-md mb-4">
+            <label for="browser">Choose a part number from the list</label>
+            <input class="form-control" list="pn" name="item" id="pn2" onchange="getValueSelected(this)" placeholder="Choose a part number from the list">
+            <datalist id="pn">
+            </datalist>
+        </div>
+        <div class="col-md mb-4">
+            <label for="description">Description</label>
+            <input type="text" class="form-control" id="description" name="description" placeholder="Description">
         </div>
     </div>
-</div>
-<div class="row g-2">
-    <div class="col-md mb-4">
-        <label for="browser">Choose a part number from the list:</label>
-        <input class="form-control" list="pn" name="pn" id="pn2" placeholder="Choose a part number from the list">
+    <div class="row g-2">
+        <div class="col-md mb-4">
+            <label for="item">Item Family</label>
+            <input type="number" class="form-control" id="item_family" name="item_family" placeholder="Item Family">
+        </div>
+        <div class="col-md mb-4">
+            <label for="sales_group">Sales Group</label>
+            <input type="text" class="form-control" id="sales_group" name="sales_group" placeholder="Sales Group">
+        </div>
+    </div>
+    <div class="row g-2">
+        <div class="col-md mb-4">
+            <label for="sales_price">Sales Price</label>
+            <input type="number" class="form-control" id="sales_price" name="sales_price" placeholder="Sales Price">
+        </div>
+        <div class="col-md mb-4">
+            <label for="um">UM</label>
+            <input type="number" class="form-control" id="um" name="um" placeholder="UM">
+        </div>
+    </div>
+    <div class="row g-2">
+        <div class="col-md mb-4"></div>
+        <div class="col-md mb-4">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="button" class="btn btn-outline-success">
+                    <span class="material-icons mx-1">
+                        add
+                    </span>
+                    Add item
+                </button>
+                <button class="btn btn-outline-primary" name="save_items" type="submit">
+                    <span class="material-icons mx-1">
+                        save
+                    </span>
+                    Save Item
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row g-2">
+        <div class="table-responsive">
+            <table id="datatablesSimple" class="text-center table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Item</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Item Family</th>
+                        <th scope="col">Sales Group</th>
+                        <th scope="col">Sales Price</th>
+                        <th scope="col">UM</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php getItemTable();  ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4"></div>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-default me-md-2" type="button">Previous</button>
+        <button type="submit" class="btn btn-primary" type="button">Next step</button>
+    </div>
+</form>
 
-        <datalist id="pn">
-            <option value="Edge">
-            <option value="Firefox">
-            <option value="Chrome">
-            <option value="Opera">
-            <option value="Safari">
-        </datalist>
-    </div>
-    <div class="col-md mb-4">
-        <label for="description">Description</label>
-        <input type="text" class="form-control" id="description" placeholder="Description">
-    </div>
-</div>
-<div class="row g-2">
-    <div class="col-md mb-4">
-        <label for="item">Item Family</label>
-        <input type="text" class="form-control" id="item_family" placeholder="Item Family">
-    </div>
-    <div class="col-md mb-4">
-        <label for="sales_group">Sales Group</label>
-        <input type="text" class="form-control" id="sales_group" placeholder="Sales Group">
-    </div>
-</div>
-<div class="row g-2">
-    <div class="col-md mb-4">
-        <label for="sales_price">Sales Price</label>
-        <input type="number" class="form-control" id="sales_price" placeholder="Sales Price">
-    </div>
-    <div class="col-md mb-4">
-        <label for="um">UM</label>
-        <input type="text" class="form-control" id="um" placeholder="UM">
-    </div>
-</div>
-<div class="col-md-6 mb-4"></div>
-<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-    <button class="btn btn-default me-md-2" type="button">Previous</button>
-    <button class="btn btn-primary" type="button">Next step</button>
-</div>
+
+<script>
+    window.onload = function(element) {
+        let find_item = document.querySelector("#pn");
+        let url = "http://localhost/tender_request/functions/items/get_items_select.php"
+        let alert_message = document.querySelector(".alert-success");
+
+        if (alert_message !== null) {
+            setTimeout(function() {
+                $(".alert").alert('close');
+            }, 4000);
+        }
+
+        fetch(url, {
+                method: 'GET',
+            })
+            .then(res => res.text())
+            .then((html) => {
+                find_item.innerHTML = html;
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+
+        window.addEventListener('DOMContentLoaded', event => {
+            const item_table = document.getElementById('item_table');
+            if (item_table) {
+                new simpleDatatables.DataTable(item_table);
+            }
+        });
+    };
+
+    function getValueSelected(element) {
+        const item_selected = document.querySelector("input[name*='item']");
+        item_selected.addEventListener("keyup", event => {
+            event.preventDefault();
+            var response = element.value;
+            item_selected.innerHTML = response;
+        })
+    }
+</script>

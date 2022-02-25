@@ -16,6 +16,10 @@ if (!empty($page)) {
             include("src/views/tender_request/tender_request_table.php");
             break;
 
+        case "delete_item":
+            include("functions/items/delete_items.php");
+            break;
+
         default:
             include("src/views/dashboard/dashboard.php");
             break;

@@ -8,7 +8,7 @@
                             <div class="display-5 text-white">Total Requests</div>
                             <div class="card-text"><?php echo getRequests(); ?></div>
                         </div>
-                        <div class="icon-circle bg-white-50 text-white"><i class="material-icons">space_dashboard</i></div>
+                        <div class="icon-circle bg-white-50 text-white"><i class="material-icons">query_stats</i></div>
                     </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                                 <?php echo getRequestsWon(); ?>
                             </div>
                         </div>
-                        <div class="icon-circle bg-white-50 text-white"><i class="material-icons">space_dashboard</i></div>
+                        <div class="icon-circle bg-white-50 text-white"><i class="material-icons">trending_up</i></div>
                     </div>
                 </div>
             </div>
@@ -38,17 +38,13 @@
                                 <?php echo getRequestsLost(); ?>
                             </div>
                         </div>
-                        <div class="icon-circle bg-white-50 text-white"><i class="material-icons">space_dashboard</i></div>
+                        <div class="icon-circle bg-white-50 text-white"><i class="material-icons">trending_down</i></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-
-
 <div class="container">
     <div class="row gx-2 mb-5">
         <div class="card card-raised col-lg-4 gx-5">
@@ -67,10 +63,6 @@
                 <canvas style="" id="requestChart"></canvas>
             </div>
         </div>
-
-
-
-
         <div class="card card-raised col-lg-8">
             <div class="card-header bg-transparent px-4 gx-5">
                 <div class="d-flex justify-content-between align-items-center">
@@ -122,6 +114,4 @@
             </div>
         </div>
     </div>
-
-
 </div>

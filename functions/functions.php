@@ -1,7 +1,8 @@
 <?php
 //require_once "../settings/config_db.php";
 
-function getRequests(){
+function getRequests()
+{
     global $connection;
 
     $sql = "SELECT COUNT(*) FROM request";
@@ -11,7 +12,8 @@ function getRequests(){
     return $row[0];
 }
 
-function getRequestsWon(){
+function getRequestsWon()
+{
     global $connection;
 
     $sql = "SELECT COUNT(*) FROM request WHERE won_lost = 1";
@@ -22,7 +24,8 @@ function getRequestsWon(){
 }
 
 
-function getRequestsLost(){
+function getRequestsLost()
+{
     global $connection;
 
     $sql = "SELECT COUNT(*) FROM request WHERE won_lost = 2";
