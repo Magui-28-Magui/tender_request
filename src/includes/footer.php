@@ -27,20 +27,32 @@
 </body>
 
 <script>
-        var ctx = document.getElementById('requestChart');
-        var myPieChart = new Chart(ctx, {
+    var ctx = document.getElementById('requestChart');
+    var myPieChart = new Chart(ctx, {
         type: 'pie',
         data: {
-        labels: ['Lost', 'Won'],
-        datasets: [{
-        data: [25.00, 75.00],
-        backgroundColor: ['#d72f4e', '#00c085']
-    }],
-    },
+            labels: ['Lost', 'Won'],
+            datasets: [{
+                data: [25.00, 75.00],
+                backgroundColor: ['#d72f4e', '#00c085']
+            }],
+        },
     });
-
 </script>
-
+<script>
+    $(document).ready(function() {
+        if (location.hash) {
+            $("a[href='" + location.hash + "']").tab("show");
+        }
+        $(document.body).on("click", "a[data-toggle='tab']", function(event) {
+            location.hash = this.getAttribute("href");
+        });
+    });
+    $(window).on("popstate", function() {
+        var anchor = location.hash || $("a[data-toggle='tab']").first().attr("href");
+        $("a[href='" + anchor + "']").tab("show");
+    });
+</script>
 <script>
     window.addEventListener('DOMContentLoaded', event => {
         // Simple-DataTables

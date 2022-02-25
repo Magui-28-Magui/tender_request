@@ -7,29 +7,29 @@ saveItems();
     <div class="row g-2">
         <div class="col-md mb-4">
             <label for="browser">Choose a part number from the list</label>
-            <input class="form-control" list="pn" name="item" id="pn2" onchange="getValueSelected(this)" placeholder="Choose a part number from the list">
+            <input class="form-control" list="pn" name="item" id="pn2" onchange="getValueSelected(this)" required placeholder="Choose a part number from the list">
             <datalist id="pn">
             </datalist>
         </div>
         <div class="col-md mb-4">
             <label for="description">Description</label>
-            <input type="text" class="form-control" id="description" name="description" placeholder="Description">
+            <input type="text" class="form-control" id="description" name="description" required placeholder="Description">
         </div>
     </div>
     <div class="row g-2">
         <div class="col-md mb-4">
             <label for="item">Item Family</label>
-            <input type="number" class="form-control" id="item_family" name="item_family" placeholder="Item Family">
+            <input type="number" class="form-control" id="item_family" name="item_family" required placeholder="Item Family">
         </div>
         <div class="col-md mb-4">
             <label for="sales_group">Sales Group</label>
-            <input type="text" class="form-control" id="sales_group" name="sales_group" placeholder="Sales Group">
+            <input type="text" class="form-control" id="sales_group" name="sales_group" required placeholder="Sales Group">
         </div>
     </div>
     <div class="row g-2">
         <div class="col-md mb-4">
             <label for="sales_price">Sales Price</label>
-            <input type="number" class="form-control" id="sales_price" name="sales_price" placeholder="Sales Price">
+            <input type="number" class="form-control" id="sales_price" name="sales_price" required placeholder="Sales Price">
         </div>
         <div class="col-md mb-4">
             <label for="um">UM</label>
@@ -40,13 +40,13 @@ saveItems();
         <div class="col-md mb-4"></div>
         <div class="col-md mb-4">
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button type="button" class="btn btn-outline-success">
+                <!--<button type="button" class="btn btn-outline-success">
                     <span class="material-icons mx-1">
                         add
                     </span>
-                    Add item
+                    Add item-->
                 </button>
-                <button class="btn btn-outline-primary" name="save_items" type="submit">
+                <button class="btn btn-outline-success" name="save_items" type="submit">
                     <span class="material-icons mx-1">
                         save
                     </span>

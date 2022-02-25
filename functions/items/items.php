@@ -12,7 +12,7 @@ function saveItems()
         $sales_price = $_POST['sales_price'];
         $um = $_POST['um'];
 
-        $query = "INSERT INTO item (item, description, item_family, sales_group, sales_price, um) VALUES ('$item', '$description', '$item_family', '$sales_group','$sales_price', '$um')";
+        $query = query("INSERT INTO item (item, description, item_family, sales_group, sales_price, um) VALUES ('$item', '$description', '$item_family', '$sales_group','$sales_price', '$um')");
         $result = mysqli_real_escape_string($connection, $query);
         if (!$result) {
             echo "Form not submitted";
@@ -32,15 +32,10 @@ function getItemTable()
 {
     global $connection;
 
-    $query = "SELECT * FROM item";
-    $result = mysqli_query($connection, $query);
-    if (!$result) {
-        die("Query error");
-    }
-    if (mysqli_num_rows($result) == 0) {
-        die("Nothing worked");
-    }
-    while ($row = mysqli_fetch_assoc($result)) {
+    $query = query("SELECT * FROM item");
+    confirm($query);
+
+    while ($row = fetch_array($query)) {
         $table = <<<DELIMETER
             <tr>
                 <th scope="row">{$row['item']}</th>

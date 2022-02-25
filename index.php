@@ -8,7 +8,6 @@ if (version_compare(PHP_VERSION, '5.3.7', '<')) {
 
 require_once("./settings/settings_db.php");
 require_once("classes/Login.php");
-#require_once ("libraries/helper.php");
 require_once ("./functions/functions.php");
 $login = new Login();
 
