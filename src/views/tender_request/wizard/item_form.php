@@ -40,12 +40,6 @@ saveItems();
         <div class="col-md mb-4"></div>
         <div class="col-md mb-4">
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <!--<button type="button" class="btn btn-outline-success">
-                    <span class="material-icons mx-1">
-                        add
-                    </span>
-                    Add item-->
-                </button>
                 <button class="btn btn-outline-success" name="save_items" type="submit">
                     <span class="material-icons mx-1">
                         save
@@ -81,7 +75,6 @@ saveItems();
         <button type="submit" class="btn btn-primary" type="button">Next step</button>
     </div>
 </form>
-
 
 <script>
     window.onload = function(element) {

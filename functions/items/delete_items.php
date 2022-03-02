@@ -7,14 +7,6 @@ if (isset($_GET['id'])) {
     $query = query("DELETE FROM item WHERE item_id = " . scape_string($_GET['id']) . "");
     confirm($query);
 
-    $message_delete = <<<DELIMETER
-        <<<DELIMETER
-        <div class="mt-3 mb-3">
-            <div class="alert alert-success" role="alert">Item deleted</div>
-        </div>
-        DELIMETER;
-
-    echo $message_delete;
     redirect($location);
 } else {
     redirect($location);

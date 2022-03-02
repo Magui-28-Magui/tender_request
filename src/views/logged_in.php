@@ -20,6 +20,10 @@ if (!empty($page)) {
             include("functions/items/delete_items.php");
             break;
 
+        case "report_lost_won":
+            include("src/views/reports/lost_won_report.php");
+            break;
+    
         default:
             include("src/views/dashboard/dashboard.php");
             break;

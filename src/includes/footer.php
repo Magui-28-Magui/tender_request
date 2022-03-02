@@ -27,17 +27,73 @@
 </body>
 
 <script>
+    // get dashboard cards
+    window.onload = function() {
+        let get_won = document.querySelector("#get_all_won");
+        let get_lost = document.querySelector("#get_all_lost");
+        let get_request = document.querySelector("#get_all_request");
+        let url_won = "http://localhost/tender_request/functions/dashboard/get_won.php";
+        let url_lost = "http://localhost/tender_request/functions/dashboard/get_lost.php";
+        let url_request = "http://localhost/tender_request/functions/dashboard/get_requests.php";
+
+        fetch(url_request, {
+                method: 'GET',
+            })
+            .then(res => res.text())
+            .then((html) => {
+                get_request.innerHTML = html;
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+
+        fetch(url_won, {
+                method: 'GET',
+            })
+            .then(res => res.text())
+            .then((html) => {
+                get_won.innerHTML = html;
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+
+        fetch(url_lost, {
+                method: 'GET',
+            })
+            .then(res => res.text())
+            .then((html) => {
+                get_lost.innerHTML = html;
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    }
+</script>
+<script>
     var ctx = document.getElementById('requestChart');
-    var myPieChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ['Lost', 'Won'],
-            datasets: [{
-                data: [25.00, 75.00],
-                backgroundColor: ['#d72f4e', '#00c085']
-            }],
-        },
-    });
+    const url = "http://localhost/tender_request/functions/dashboard/graph_dashboard.php";
+
+    const get_graph = async () => {
+        $.ajax({
+            type: 'GET',
+            url: url,
+            success: function(html) {
+                var myPieChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Lost', 'Won'],
+                        datasets: [{
+                            data: html,
+                            backgroundColor: ['#26A69A', '#6200EA'],
+                        }],
+                    },
+                });
+            }
+        });
+    }
+
+    get_graph();
 </script>
 <script>
     $(document).ready(function() {
@@ -63,6 +119,18 @@
             new simpleDatatables.DataTable(datatablesSimple);
         }
     });
-</script>
 
-</html>
+
+    window.addEventListener('DOMContentLoaded', event => {
+        const report_lost_won = document.getElementById('report_lost_won');
+
+        if (report_lost_won) {
+            new simpleDatatables.DataTable(report_lost_won);
+            const input_min = document.querySelector('#min');
+            const input_max = document.querySelector('#max'); 
+            const           
+        }
+    });
+</script>
+<script src="./assets/js/range_date.js"></script>
+</htm

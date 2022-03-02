@@ -27,6 +27,18 @@
                             <a class="nav-link" href="layout-light.html">Item 2</a>
                         </nav>
                     </div>
+                    <!-- Reports -->
+                    <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseReports" aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="nav-link-icon"><i class="material-icons">description</i></div>
+                        Reports
+                        <div class="drawer-collapse-arrow"><i class="material-icons">expand_more</i></div>
+                    </a>
+                    <div class="collapse" id="collapseReports" aria-labelledby="headingOne" data-bs-parent="#drawerAccordion">
+                        <nav class="drawer-menu-nested nav">
+                            <a class="nav-link" href="index.php?page=report_lost_won">Lost / Won</a>
+                            <!--<a class="nav-link" href="layout-light.html">Item 2</a>-->
+                        </nav>
+                    </div>
                 </div>
             </div>
             <!-- USER LOG-->

@@ -1,4 +1,6 @@
+<?php require_once("./functions/items/items.php") ?>
 <div class="container mt-4">
+    <!-- cards -->
     <div class="row">
         <div class="col-md-4 mb-4">
             <div class="card card-raised border-start bg-primary border-4">
@@ -6,7 +8,7 @@
                     <div class="d-flex justify-content-between text-white align-items-center mb-2">
                         <div class="me-2">
                             <div class="display-5 text-white">Total Requests</div>
-                            <div class="card-text"><?php echo getRequests(); ?></div>
+                            <div class="card-text" id="get_all_request"></div>
                         </div>
                         <div class="icon-circle bg-white-50 text-white"><i class="material-icons">query_stats</i></div>
                     </div>
@@ -19,9 +21,7 @@
                     <div class="d-flex justify-content-between text-white align-items-center mb-2">
                         <div class="me-2">
                             <div class="display-5 text-white">Won</div>
-                            <div class="card-text">
-                                <?php echo getRequestsWon(); ?>
-                            </div>
+                            <div class="card-text" id="get_all_won"></div>
                         </div>
                         <div class="icon-circle bg-white-50 text-white"><i class="material-icons">trending_up</i></div>
                     </div>
@@ -34,9 +34,7 @@
                     <div class="d-flex justify-content-between text-white align-items-center mb-2">
                         <div class="me-2">
                             <div class="display-5 text-white">Lost</div>
-                            <div class="card-text">
-                                <?php echo getRequestsLost(); ?>
-                            </div>
+                            <div class="card-text" id="get_all_lost"></div>
                         </div>
                         <div class="icon-circle bg-white-50 text-white"><i class="material-icons">trending_down</i></div>
                     </div>
@@ -59,10 +57,12 @@
                     </div>
                 </div>
             </div>
+            <!-- grafica -->
             <div class="card-body p-4">
-                <canvas style="" id="requestChart"></canvas>
+                <canvas id="requestChart"></canvas>
             </div>
         </div>
+        <!-- tabla -->
         <div class="card card-raised col-lg-8">
             <div class="card-header bg-transparent px-4 gx-5">
                 <div class="d-flex justify-content-between align-items-center">
@@ -74,41 +74,32 @@
                         <button class="btn btn-lg btn-icon" type="button"><i class="material-icons">print</i></button>
                     </div>
                 </div>
-
             </div>
             <div class="card-body p-4">
-                <!-- Simple DataTables example-->
                 <table id="datatablesSimple" class="text-center table table-striped table-hover">
                     <thead>
-                    <tr>
-                        <th class="text-center">Request ID</th>
-                        <th class="text-center">Tender Date</th>
-                        <th class="text-center">Items</th>
-                        <th class="text-center">Actions</th>
-                    </tr>
+                        <tr>
+                            <th class="text-center">Request ID</th>
+                            <th class="text-center">Customer</th>
+                            <th class="text-center">Award Date</th>
+                            <th class="text-center">Site</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>R7</td>
-                        <td>2/18/22</td>
-                        <td>30</td>
-                        <td>
-                            <a href="" class="btn btn-raised-primary">
-                                <i class="material-icons icon-sm me-1 text-light">search</i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>R8</td>
-                        <td>2/17/22</td>
-                        <td>30</td>
-                        <td>
-                            <a href="" class="btn btn-raised-primary">
-                                <i class="material-icons icon-sm me-1 text-light">search</i>
-                            </a>
-                        </td>
-                    </tr>
+                        <?php
+                        $query_sql = query("SELECT * FROM request");
+                        confirm($query_sql);
 
+                        while ($row = fetch_array($query_sql)) :
+                        ?>
+                            <tr>
+                                <th scope="row"><?php echo $row['id']; ?></th>
+                                <td><?php echo $row['customer_service_rep']; ?></td>
+                                <td><?php echo $row['award_date']; ?></td>
+                                <td><?php echo $row['site']; ?></td>
+                            </tr>
+                        <?php
+                        endwhile ?>
                     </tbody>
                 </table>
             </div>

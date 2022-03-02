@@ -30,8 +30,6 @@ function saveItems()
 
 function getItemTable()
 {
-    global $connection;
-
     $query = query("SELECT * FROM item");
     confirm($query);
 
